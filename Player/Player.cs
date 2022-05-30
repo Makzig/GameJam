@@ -3,6 +3,12 @@ using System;
 
 public class Player : KinematicBody
 {
+
+    [Export]
+    float health = 100f;
+
+
+
     public void Movement()
     {
         Vector3 moveVelocity = Vector3.Zero;
@@ -23,14 +29,34 @@ public class Player : KinematicBody
         Movement();
     }
 
+
+
+
     public override void _Ready()
     {
-        
+        GetNode<Area>("HealthBox").Connect("area_entered", this, "_OnHit");
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+
+
+
+    public void _OnHit(Area area)
+    {
+        if(area.IsInGroup("EnemyHit"))
+        {
+            health -= (float)area.Get("damage");
+
+            if (health <= 0)
+            {
+                GD.Print("You killing!!!");
+
+            }
+
+
+        }
+       
+
+    }
+    
+
 }

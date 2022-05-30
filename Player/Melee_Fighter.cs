@@ -7,6 +7,12 @@ public class Melee_Fighter : Player
     // private int a = 2;
     // private string b = "text";
 
+    public virtual void MelleeAttack()
+    {
+
+
+    }
+
 
     public override void _PhysicsProcess(float delta)
     {
