@@ -18,15 +18,11 @@ public class TestEnemy : KinematicBody
     private ulong _lastTimUpdatePath = 0;
     private Godot.Collections.Array<Vector3> _path = new Godot.Collections.Array<Vector3>();
     [Export]
-    private float _moveSpeed = 1;
+    private float _moveSpeed = 10;
 
     public Vector3 GetPlayerPos()
     {
-        //return Vector3.Zero;
-        Godot.Camera cam = GetViewport().GetCamera();
-        Vector3 origin = cam.ProjectRayOrigin(GetViewport().GetMousePosition());
-        Vector3 to = origin + cam.ProjectRayNormal(GetViewport().GetMousePosition()) * cam.Translation.Length();
-        return to;
+        return ((Spatial)GetParent().FindNode("Melee_Fighter")).Translation;
     }
 
     public override void _PhysicsProcess(float delta)
