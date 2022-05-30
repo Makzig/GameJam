@@ -1,12 +1,7 @@
 using Godot;
-using System;
 
 public class Melee_Fighter : Player
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
     float attackTime = 0.3f;
 
     bool attackTimeout = false;
@@ -14,15 +9,15 @@ public class Melee_Fighter : Player
 
     public virtual void MelleeAttack()
     {
-         if (attackTimeout == false)
-            {
-                GetNode<Timer>("DamageBox/AttackTimer").Start();
-                attackTimeout = true;
-                GetNode<CollisionShape>("DamageBox/CollisionShape").SetDeferred("disabled", true);
-            }
-            
+        if (attackTimeout == false)
+        {
+            GetNode<Timer>("DamageBox/AttackTimer").Start();
+            attackTimeout = true;
+            GetNode<CollisionShape>("DamageBox/CollisionShape").SetDeferred("disabled", true);
+        }
 
-        
+
+
 
     }
 
@@ -33,9 +28,9 @@ public class Melee_Fighter : Player
         if (@event.IsActionPressed("Attack_Shoot"))
         {
             MelleeAttack();
-            GD.Print("¿Ú‡Í‡");
+            GD.Print("–†—í—Ä—ä—Ä");
         }
-        
+
 
     }
 
@@ -52,12 +47,6 @@ public class Melee_Fighter : Player
         GetNode<Timer>("DamageBox/AttackTimer").WaitTime = attackTime;
         GetNode<Timer>("DamageBox/AttackTimer").Connect("timeout", this, "_OnAttackFinished");
     }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 
     public void _OnAttackFinished()
     {
