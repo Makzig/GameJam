@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://TestEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mesh_lib.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=3]
 
@@ -13,6 +14,9 @@ agent/radius = 0.1
 agent/max_climb = 0.1
 
 [node name="Spatial" type="Spatial"]
+
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.406366, 0, 0, 0, -1.77628e-08, 0.406366, 0, -0.406366, -1.77628e-08, 5.67943, 1.73682, 4.43239 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.908172, 0.199615, -0.367936, 0, 0.878975, 0.476867, 0.418596, -0.433078, 0.798261, 0, 1.82431, 0 )
