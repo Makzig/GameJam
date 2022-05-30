@@ -3,7 +3,7 @@ using System;
 
 public class Player : KinematicBody
 {
-    private void Movement()
+    public void Movement()
     {
         Vector3 moveVelocity = Vector3.Zero;
 
