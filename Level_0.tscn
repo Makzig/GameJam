@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/kenney_prototype_textures/dark/texture_01.png" type="Texture" id=1]
+[ext_resource path="res://Box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Camera.tscn" type="PackedScene" id=3]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 20, 20 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+uv1_triplanar = true
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.908172, 0.199615, -0.367936, 0, 0.878975, 0.476867, 0.418596, -0.433078, 0.798261, 0, 1.82431, 0 )
+shadow_enabled = true
+
+[node name="Boxes" type="Spatial" parent="."]
+
+[node name="MeshInstance2" parent="Boxes" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -5 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3" parent="Boxes" instance=ExtResource( 2 )]
+skeleton = NodePath("../..")
+
+[node name="MeshInstance4" parent="Boxes" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, 6 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance5" parent="Boxes" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance6" parent="Boxes" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 0 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance" parent="Boxes" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5 )
+
+[node name="Spatial" parent="." instance=ExtResource( 3 )]

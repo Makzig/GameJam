@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Camera.cs" type="Script" id=1]
+
+[node name="translate_rot_y" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="rot_x" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.677788, 0.735258, 0, -0.735258, 0.677788, 0, 0, 0 )
+
+[node name="translate_z" type="Camera" parent="rot_x"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.57019 )
+current = true
