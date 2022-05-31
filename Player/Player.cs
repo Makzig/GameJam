@@ -7,8 +7,9 @@ public class Player : KinematicBody
     [Export]
     float health = 100f;
 
+    float rayRotate = 0f;
 
-
+    CollisionShape collisionRotate = null;
     public void Movement()
     {
         Vector3 moveVelocity = Vector3.Zero;
@@ -27,6 +28,10 @@ public class Player : KinematicBody
     {
         base._PhysicsProcess(delta);
         Movement();
+
+        GetNode<CollisionShape>("CollisionShape").RotationDegrees = new Vector3(0, GetNode<Spatial>("LookRay/Ray").RotationDegrees.y, 0);
+       
+        
     }
 
 
@@ -35,6 +40,8 @@ public class Player : KinematicBody
     public override void _Ready()
     {
         GetNode<Area>("HealthBox").Connect("area_entered", this, "_OnHit");
+        rayRotate = (GetNode<Spatial>("LookRay/Ray").RotationDegrees.y);
+        collisionRotate = GetNode<CollisionShape>("CollisionShape");
     }
 
 
