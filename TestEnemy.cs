@@ -22,7 +22,7 @@ public class TestEnemy : KinematicBody
 
     public Vector3 GetPlayerPos()
     {
-        //Заместо Melee_Fighter подставил игрока 
+        //Р—Р°РјРµСЃС‚Рѕ Melee_Fighter РїРѕРґСЃС‚Р°РІРёР» РёРіСЂРѕРєР° 
         return ((Spatial)GetParent().FindNode("Player")).Translation;
     }
 
