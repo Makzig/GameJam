@@ -128,6 +128,5 @@ common/enable_pause_aware_picking=true
 
 threads/thread_model=2
 threads/thread_safe_bvh=true
-quality/filters/anisotropic_filter_level=16
 quality/filters/use_fxaa=true
 environment/default_environment="res://default_env.tres"
