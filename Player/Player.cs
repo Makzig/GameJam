@@ -9,12 +9,14 @@ public class Player : KinematicBody
 
     float rayRotate = 0f;
 
+    Spatial camera;
+
     CollisionShape collisionRotate = null;
     public void Movement()
     {
         Vector3 moveVelocity = Vector3.Zero;
 
-        Vector2 inputVelocity = Input.GetVector("Move_left", "Move_right", "Move_up", "Move_down");
+        Vector2 inputVelocity = Input.GetVector("Move_left", "Move_right", "Move_up", "Move_down").Rotated(-camera.Rotation.y);
 
         float speed = 10f;
 
@@ -39,7 +41,10 @@ public class Player : KinematicBody
 
     public override void _Ready()
     {
-        GetNode<Area>("HealthBox").Connect("area_entered", this, "_OnHit");
+        //GD.Print(GetNode("LookRay/translate_rot_y/rot_x/translate_z"));
+        camera = GetNode<Spatial>("LookRay/translate_rot_y");
+
+        GetNode<Area>("CollisionShape/HealthBox").Connect("area_entered", this, "_OnHit");
         rayRotate = (GetNode<Spatial>("LookRay/Ray").RotationDegrees.y);
         collisionRotate = GetNode<CollisionShape>("CollisionShape");
     }

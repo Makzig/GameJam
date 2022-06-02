@@ -11,3 +11,4 @@ transform = Transform( 1, 0, 0, 0, 0.591268, 0.806476, 0, -0.806476, 0.591268, 0
 [node name="translate_z" type="Camera" parent="rot_x"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.213 )
 current = true
+far = 8192.0

@@ -10,5 +10,5 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.37646 )
 
 [node name="ShootReload" type="Timer" parent="." index="2"]
-wait_time = 0.25
+wait_time = 1.182
 one_shot = true

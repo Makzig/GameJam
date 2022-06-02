@@ -1,7 +1,7 @@
 extends Spatial
 
 
-onready var camera = $Camera
+onready var camera = $translate_rot_y/rot_x/translate_z
 
 var ray_origin = Vector3()
 var ray_end = Vector3()

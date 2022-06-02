@@ -10,15 +10,11 @@ public class Camera : Spatial
     public float _speedRotate = 1;
     [Export]
     public float _speedZoom = 1;
-    
-    public Spatial _target = null;
 
 
     public override void _Ready()
     {
         base._Ready();
-
-        _target = FindPlayer();
     }
 
     private Spatial FindPlayer()
@@ -30,19 +26,6 @@ public class Camera : Spatial
     {
         base._Process(delta);
 
-        if (_target == null)
-        {
-            Vector2 moveVec = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-            if (moveVec != Vector2.Zero)
-            {
-                moveVec *= _speedMove * delta;
-                Translate(new Vector3(moveVec.x, 0, moveVec.y));
-            }
-        }
-        else
-        {
-            Translation = new Vector3(_target.Translation.x, 0, _target.Translation.z);
-        }
 
         float rotate = Input.GetAxis("rot_left", "rot_right");
         if (rotate != 0)
