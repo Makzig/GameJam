@@ -4,20 +4,20 @@ using System;
 public class Enemy : KinematicBody
 {
     [Export]
-    float minDistShot = 500;
+    public float minDistShot = 500;
     [Export]
-    float shotInterval = 1F;
+    public float shotInterval = 1F;
     [Export]
-    float speedRotation = 2;
+    public float speedRotation = 2;
     [Export]
-    float speedMove = 5;
+    public float speedMove = 5;
     [Export]
-    int life = 150;
+    public int life = 90;
 
-    private ulong lastTimeShot = 0;
-    private Spatial player;
-    private PackedScene arrowPacked;
-    private float lerpRotate;
+    protected ulong lastTimeShot = 0;
+    protected Spatial player;
+    protected PackedScene arrowPacked;
+    protected float lerpRotate;
 
     public override void _Ready()
     {
@@ -44,6 +44,13 @@ public class Enemy : KinematicBody
                 }
             }
         }
+
+        MoveDown();
+    }
+
+    private void MoveDown()
+    {
+        MoveAndCollide(Vector3.Down * 1);
     }
 
     private void Move()
@@ -64,7 +71,7 @@ public class Enemy : KinematicBody
         return (Spatial)player.Call("GetPlayer");
     }
 
-    private void Shot(Vector3 pos)
+    protected virtual void Shot(Vector3 pos)
     {
         RigidBody arrow = arrowPacked.Instance<RigidBody>();
         Spatial arrowPosition = (Spatial)FindNode("PositionArrow");

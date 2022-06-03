@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://addons/kenney_prototype_textures/dark/texture_01.png" type="Texture" id=1]
-[ext_resource path="res://enemies/Enemy_1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Ranger.tscn" type="PackedScene" id=3]
 [ext_resource path="res://env/1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objectts/Arrow.tscn" type="PackedScene" id=5]
@@ -10,12 +10,14 @@
 extents = Vector3( 288.086, 1, 259.621 )
 
 [sub_resource type="ProceduralSky" id=3]
+sun_energy = 15.12
 
 [sub_resource type="Environment" id=4]
 background_mode = 2
 background_sky = SubResource( 3 )
 background_color = Color( 0.6, 0.901961, 0.858824, 1 )
 background_energy = 0.57
+fog_depth_end = 368.7
 ssao_enabled = true
 
 [sub_resource type="CubeMesh" id=5]
@@ -51,34 +53,40 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.02341, 0 )
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
-[node name="KinematicBody" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89739, 4.05061, 20.8372 )
+[node name="env" type="Spatial" parent="."]
 
-[node name="KinematicBody2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2062, 4.05061, 66.3279 )
+[node name="Spatial" parent="env" instance=ExtResource( 4 )]
+transform = Transform( -0.200821, 0, 0.979628, 0, 1, 0, -0.979628, 0, -0.200821, 31.9756, 4.01429, 46.9402 )
 
-[node name="KinematicBody3" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.684, 4.05061, -41.53 )
+[node name="Spatial2" parent="env" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90672, 4.01429, -10.2322 )
 
-[node name="KinematicBody4" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1518, 4.05061, 29.3033 )
+[node name="Spatial3" parent="env" instance=ExtResource( 4 )]
+transform = Transform( 0.616692, 0, -0.787204, 0, 1, 0, 0.787204, 0, 0.616692, 91.9673, 4.01429, 1.63955 )
 
-[node name="KinematicBody5" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -87.9577, 4.05061, -36.8246 )
+[node name="Spawners" type="Spatial" parent="."]
 
-[node name="KinematicBody6" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.1236, 4.05061, -2.88628 )
+[node name="Spatial" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4825, 7.2836, -6.1924 )
+enemyType = 1
 
-[node name="KinematicBody7" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3886, 4.05061, -73.9331 )
+[node name="Spatial2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.1109, 7.2836, -40.1601 )
 
-[node name="KinematicBody8" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.9589, 4.05061, 32.3692 )
+[node name="Spatial3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5455, 7.2836, -70.1852 )
 
-[node name="KinematicBody9" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54.4279, 4.05061, 37.6133 )
+[node name="Spatial4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71.7175, 7.2836, 75.5574 )
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="Spatial5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76.332, 7.2836, -105.512 )
 
-[node name="Spatial" parent="Spatial" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.01429, 0 )
+[node name="Spatial6" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.0918, 7.2836, -92.0251 )
+
+[node name="Spatial7" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.611, 7.2836, 31.0371 )
+
+[node name="Spatial8" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4556, 7.2836, 120.243 )

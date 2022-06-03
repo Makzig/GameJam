@@ -24,6 +24,9 @@ public class Player : KinematicBody
 
         moveVelocity = MoveAndSlide(moveVelocity * speed);
 
+
+        MoveAndCollide(Vector3.Down);
+
     }
 
     public override void _PhysicsProcess(float delta)
@@ -41,7 +44,6 @@ public class Player : KinematicBody
 
     public override void _Ready()
     {
-        //GD.Print(GetNode("LookRay/translate_rot_y/rot_x/translate_z"));
         camera = GetNode<Spatial>("LookRay/translate_rot_y");
 
         GetNode<Area>("CollisionShape/HealthBox").Connect("area_entered", this, "_OnHit");
