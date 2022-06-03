@@ -21,7 +21,7 @@ func _physics_process(_delta):
 	ray_end = ray_origin + camera.project_ray_normal(mouse_position) * 2000
 	var intesaction = space_state.intersect_ray(ray_origin, ray_end)
 	
-	if !intesaction.empty() && look_on_mouse:
+	if !intesaction.empty() && look_on_mouse && intesaction["collider_id"] != get_parent().get_instance_id():
 		var pos = intesaction.position
 		$Ray.look_at(Vector3(pos.x, translation.y, pos.z), Vector3(0,1,0 ))
 	

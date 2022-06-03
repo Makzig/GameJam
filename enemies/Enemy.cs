@@ -4,13 +4,15 @@ using System;
 public class Enemy : KinematicBody
 {
     [Export]
-    float minDistShot = 1000;
+    float minDistShot = 500;
     [Export]
     float shotInterval = 1F;
     [Export]
     float speedRotation = 2;
     [Export]
     float speedMove = 5;
+    [Export]
+    int life = 150;
 
     private ulong lastTimeShot = 0;
     private Spatial player;
@@ -77,6 +79,16 @@ public class Enemy : KinematicBody
         GetParent().AddChild(arrow);
 
         lastTimeShot = OS.GetTicksUsec();
+    }
+
+
+    public void OnHit(int damage)
+    {
+        life -= damage;
+        if(life <= 0)
+        {
+            QueueFree();
+        }
     }
 
     public Vector3 GetPlayerPosition()
